@@ -6,13 +6,13 @@
     @computed()
     userSelectableHome() {
       let core = this._super();
-      core.push({ name: "Home", value: 102 })
+      core.push({ name: "Home", value: 101 })
       return core;
     },
     
     homeChanged() {
       const homepageId = this.get("model.user_option.homepage_id");
-      if (homepageId === 102) {
+      if (homepageId === 101) {
         setDefaultHomepage("home");
       } else {
         this._super();
