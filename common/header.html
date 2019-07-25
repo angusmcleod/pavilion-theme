@@ -1,16 +1,8 @@
-<script type='text/x-handlebars' data-template-name='discovery/categories'>
-  {{#discovery-categories refresh=(action "refresh")}}
-    {{component 'categories-and-latest-topics' model=model}}
-  {{/discovery-categories}}
+<script type='text/x-handlebars' data-template-name='/connectors/landing-index/pavilion-landing-container'>
+  {{pavilion-landing}}
 </script>
 
-<script type='text/x-handlebars' data-template-name='mobile/discovery/categories'>
-  {{#discovery-categories refresh=(action "refresh")}}
-    {{component 'categories-and-latest-topics' model=model}}
-  {{/discovery-categories}}
-</script>
-
-<script type='text/x-handlebars' data-template-name='components/categories-and-latest-topics'>
+<script type='text/x-handlebars' data-template-name='components/pavilion-landing'>
   <div class='column categories'>
     <section class="landing">
       <div class="first">
@@ -48,9 +40,11 @@
       
       <div class="landing-block">
         <div class="home-title">
-          <a name="categories" href="#categories">Learn More</a>
+          <a name="categories" href="/categories">Learn More</a>
         </div>
-        {{categories-boxes categories=filteredCategories}}
+        {{#if filteredCategories}}
+          {{categories-boxes categories=filteredCategories}}
+        {{/if}}
       </div>
 
       <div class="landing-block">
@@ -88,33 +82,36 @@
   const store = container.lookup("service:store");
   const { ajax } = require('discourse/lib/ajax');
   const nonPluginCategories = ['public-work', 'introductions', 'meta', 'knowledge-base', 'news'];
-  const workCategory = 'public-work/tasks';
-
-  api.modifyClass('component:categories-and-latest-topics', {
-    @computed('model.categories')
-    filteredCategories(categories) {
-      return categories.filter(c => {
-        return !c.read_restricted && nonPluginCategories.indexOf(c.slug) === -1;
-      });
-    },
-
-    @computed()
-    imageUrls(){
-      let style = null;
-      if (window.getComputedStyle && window.getComputedStyle(document.body, '::before')) {
-        style = window.getComputedStyle(document.body, '::before');
-        style = style.content;
-      }
-      return JSON.parse(JSON.parse(style));
-    }
-  });
   
-  api.modifyClass('route:discovery-categories', {
-    afterModel(model, transition) {
-      return ajax(`/groups/team/members.json`).then(result => {
-        console.log(result.members)
-        model.set('teamMembers', result.members)
-      })
-    }
-  });
+  Discourse.register(
+    "component:pavilion-landing",
+    Ember.Component.extend({
+      didInsertElement() {
+        this.getTeamMembers();
+      },
+      
+      @computed('site.categories')
+      filteredCategories(categories) {
+        return categories.filter(c => {
+          return !c.read_restricted && nonPluginCategories.indexOf(c.slug) === -1;
+        });
+      },
+
+      @computed()
+      imageUrls(){
+        let style = null;
+        if (window.getComputedStyle && window.getComputedStyle(document.body, '::before')) {
+          style = window.getComputedStyle(document.body, '::before');
+          style = style.content;
+        }
+        return JSON.parse(JSON.parse(style));
+      },
+      
+      getTeamMembers() {
+        ajax(`/groups/team/members.json`).then(result => {
+          this.set('teamMembers', result.members);
+        });
+      }
+    })
+  );
 </script>
