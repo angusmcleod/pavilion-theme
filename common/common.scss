@@ -96,8 +96,8 @@ section.landing {
     border: 1px solid $primary;
     padding: 10px;
     border-radius: 8px;
-    margin: 0 0 20px 0;
-    width: calc(33.33% - 35px);
+    margin: 0 0 35px 0;
+    width: 29%;
 
     .details {
       margin-left: 10px;
@@ -164,6 +164,8 @@ section.landing {
     
     .category-box {
       margin: 0 0 30px;
+      border-radius: 4px;
+      width: 31%;
     }
   }
 }
