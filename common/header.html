@@ -1,7 +1,7 @@
 <script type="text/discourse-plugin" version="0.8">
   const computed = require('ember-addons/ember-computed-decorators').default;
 
-  api.modifyClass('controller:interface', {
+  api.modifyClass('controller:preferences/interface', {
     @computed()
     userSelectableHome() {
       let core = this._super();
