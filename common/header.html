@@ -81,7 +81,7 @@
   const container = Discourse.__container__;
   const store = container.lookup("service:store");
   const { ajax } = require('discourse/lib/ajax');
-  const nonPluginCategories = ['public-work', 'introductions', 'meta', 'knowledge-base', 'news'];
+  const homeCategories = ['welcome', 'clients', 'plugins'];
   
   Discourse.register(
     "component:pavilion-landing",
@@ -93,7 +93,7 @@
       @computed('site.categories')
       filteredCategories(categories) {
         return categories.filter(c => {
-          return !c.read_restricted && nonPluginCategories.indexOf(c.slug) === -1;
+          return homeCategories.indexOf(c.slug) > -1;
         });
       },
 
