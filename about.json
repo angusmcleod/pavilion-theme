@@ -2,12 +2,6 @@
   "name": "Pavilion Theme",
   "about_url": null,
   "license_url": null,
-  "assets": {
-    "background": "assets/background.png",
-    "balloons": "assets/balloons.png",
-    "bike": "assets/bike.png",
-    "guitar": "assets/guitar.png"
-  },
   "color_schemes": {
   },
   "component": true
