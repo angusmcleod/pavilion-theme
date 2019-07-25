@@ -1,0 +1,120 @@
+<script type='text/x-handlebars' data-template-name='discovery/categories'>
+  {{#discovery-categories refresh=(action "refresh")}}
+    {{component 'categories-and-latest-topics' model=model}}
+  {{/discovery-categories}}
+</script>
+
+<script type='text/x-handlebars' data-template-name='mobile/discovery/categories'>
+  {{#discovery-categories refresh=(action "refresh")}}
+    {{component 'categories-and-latest-topics' model=model}}
+  {{/discovery-categories}}
+</script>
+
+<script type='text/x-handlebars' data-template-name='components/categories-and-latest-topics'>
+  <div class='column categories'>
+    <section class="landing">
+      <div class="first">
+        <div class="home-image"></div>
+        <div class="site-title">
+          {{theme-setting 'home_site_title'}}
+        </div>
+        <div class="home-title">
+          {{{theme-setting 'home_site_description'}}}
+        </div>
+      </div>
+
+      <div class="landing-block">
+        <ul class="links">
+          <li>
+            <a href="{{theme-setting 'home_box_1_url'}}">
+              <img class="image start" src="{{imageUrls.balloons}}">
+              <span class="label">{{theme-setting 'home_box_1_text'}}</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{theme-setting 'home_box_2_url'}}">
+              <img class="image plugins" src="{{imageUrls.bike}}">
+              <span class="label">{{theme-setting 'home_box_2_text'}}</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{theme-setting 'home_box_3_url'}}">
+              <img class="image learn" src="{{imageUrls.guitar}}">
+              <span class="label">{{theme-setting 'home_box_3_text'}}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="landing-block">
+        <div class="home-title">
+          <a name="categories" href="#categories">Learn More</a>
+        </div>
+        {{categories-boxes categories=filteredCategories}}
+      </div>
+
+      <div class="landing-block">
+        <div class="home-title">
+          <a name="team" href="#team">Our Team</a>
+        </div>
+        <div class="home-profiles">
+          {{#each model.teamMembers as |tm|}}
+            <a href="/u/{{tm.username}}" class="home-profile">
+              <div class="avatar">
+                {{avatar tm avatarTemplatePath="avatar_template"
+                            usernamePath="username"
+                            namePath="name"
+                            imageSize="large"}}
+              </div>
+              <div class="details">
+                <div class="name">
+                  {{tm.name}}
+                </div>
+                <div class="bio">
+                  {{{tm.bio}}}
+                </div>
+              </div>
+            </a>
+          {{/each}}
+        </div>
+      </div>
+    </section>
+  </div>
+</script>
+
+<script type="text/discourse-plugin" version="0.8">
+  const computed = require('ember-addons/ember-computed-decorators').default;
+  const container = Discourse.__container__;
+  const store = container.lookup("service:store");
+  const { ajax } = require('discourse/lib/ajax');
+  const nonPluginCategories = ['public-work', 'introductions', 'meta', 'knowledge-base', 'news'];
+  const workCategory = 'public-work/tasks';
+
+  api.modifyClass('component:categories-and-latest-topics', {
+    @computed('model.categories')
+    filteredCategories(categories) {
+      return categories.filter(c => {
+        return !c.read_restricted && nonPluginCategories.indexOf(c.slug) === -1;
+      });
+    },
+
+    @computed()
+    imageUrls(){
+      let style = null;
+      if (window.getComputedStyle && window.getComputedStyle(document.body, '::before')) {
+        style = window.getComputedStyle(document.body, '::before');
+        style = style.content;
+      }
+      return JSON.parse(JSON.parse(style));
+    }
+  });
+  
+  api.modifyClass('route:discovery-categories', {
+    afterModel(model, transition) {
+      return ajax(`/groups/team/members.json`).then(result => {
+        console.log(result.members)
+        model.set('teamMembers', result.members)
+      })
+    }
+  });
+</script>
