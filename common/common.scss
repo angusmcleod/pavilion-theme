@@ -20,7 +20,8 @@ div.team-user-card > div {
   }
   
   .map-location > span {
-    width: calc(100%);
+    width: calc(90%);
+    vertical-align: middle;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
