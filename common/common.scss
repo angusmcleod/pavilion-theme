@@ -13,7 +13,7 @@ div.team-user-card > div {
     }
   }
   
-  .card-row:not(.first-row) {
+  div.card-row:last-of-type {
     margin-top: 0
   }
 }
@@ -23,7 +23,7 @@ div.team-user-card > div {
     margin-right: 10px;
   }
   
-  > div {
+  > span {
     margin-bottom: 10px;
   }
 }
