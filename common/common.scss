@@ -15,8 +15,13 @@ div.team-user-card > div {
 }
 
 .location-and-website {
-  .website-name {
+  span.website-name {
     margin-right: 10px;
+    max-width: 40%;
+    
+    &+ span {
+      max-width: 60%;
+    }
   }
   
   .map-location > span {
