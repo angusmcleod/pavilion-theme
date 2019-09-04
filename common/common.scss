@@ -12,10 +12,6 @@ div.team-user-card > div {
       font-size: 15px;
     }
   }
-  
-  div.card-row.fourth-row {
-    margin-top: 0
-  }
 }
 
 .location-and-website {
@@ -23,8 +19,12 @@ div.team-user-card > div {
     margin-right: 10px;
   }
   
-  > span {
-    margin-bottom: 10px;
+  .map-location > span {
+    width: calc(100%);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
   }
 }
 
