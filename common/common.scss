@@ -7,13 +7,25 @@
 }
 
 div.team-user-card > div {  
-  .metadata span {
-    font-size: 15px;
+  .metadata {
+    span, h3 {
+      font-size: 15px;
+    }
+  }
+  
+  .card-row:not(.first-row) {
+    margin-top: 0
   }
 }
 
-.location-and-website .website-name {
-  margin-right: 10px;
+.location-and-website {
+  .website-name {
+    margin-right: 10px;
+  }
+  
+  > div {
+    margin-bottom: 10px;
+  }
 }
 
 .follow-toggle + .follow-toggle {
