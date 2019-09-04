@@ -6,8 +6,10 @@
   width: auto;
 }
 
-div.team-user-card > div h1 {
-  display: inline-block;
-  vertical-align: middle;
+div.team-user-card > div .names {
+  h1, h2 {
+    display: inline-block;
+    vertical-align: middle;
+  }
 }
 
