@@ -16,3 +16,7 @@ div.team-user-card > div {
   margin-right: 10px;
 }
 
+.follow-toggle + .follow-toggle {
+  display: none;
+}
+
