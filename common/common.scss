@@ -15,26 +15,16 @@ div.team-user-card > div {
 }
 
 .location-and-website {
+  flex-wrap: initial !important;
+  align-items: flex-start !important;
+  
   span.website-name {
     margin-right: 10px;
-    max-width: 40%;
-    
-    &+ span {
-      max-width: 60%;
-    }
+    overflow: initial !important;
   }
   
-  .map-location > span {
-    width: calc(90%);
-    vertical-align: middle;
+  span.website-name + span {
+    overflow: hidden !important;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: inline-block;
   }
 }
-
-.follow-toggle + .follow-toggle {
-  display: none;
-}
-
