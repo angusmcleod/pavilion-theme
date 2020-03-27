@@ -13,18 +13,3 @@ div.team-user-card > div {
     }
   }
 }
-
-.location-and-website {
-  flex-wrap: initial !important;
-  align-items: flex-start !important;
-  
-  span.website-name {
-    margin-right: 10px;
-    overflow: initial !important;
-  }
-  
-  span.website-name + span {
-    overflow: hidden !important;
-    white-space: nowrap;
-  }
-}
