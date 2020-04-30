@@ -14,21 +14,30 @@ div.team-user-card > div {
   }
 }
 
+@mixin underline {
+  background-image: linear-gradient(180deg, transparent 95%, $tertiary 0);
+  background-repeat: no-repeat;
+  background-color: initial;
+  padding: 0px;
+  background-size: 100% 100%;
+  text-decoration: none;
+}
+
 .category-heading {
   display: inline-block;
   margin-bottom: 20px;
   width: 100%;
   
   &.has-logo {
-    border: 2px solid $tertiary;
+    border: 1px solid $tertiary;
     padding: 1em;
     box-sizing: border-box;
+    display: flex;
   }
   
   .category-logo.aspect-image {
     max-width: 60px;
     vertical-align: middle;
-    padding-bottom: 10px;
   }
   
   .category-name-header {
@@ -37,12 +46,7 @@ div.team-user-card > div {
     font-size: 1.5em;
     margin: 7px 0;
 
-    background-image: linear-gradient(180deg, transparent 95%, $tertiary 0);
-    background-repeat: no-repeat;
-    background-color: initial;
-    padding: 0px;
-    background-size: 100% 100%;
-    text-decoration: none;
+    @include underline;
   }
   
   p {
@@ -54,4 +58,42 @@ div.team-user-card > div {
 
 .category-open-source .category-heading .category-logo {
   margin-top: 10px;
+}
+
+.categories-list .category-list .category {
+  border-left: initial;
+  padding-left: 0;
+  
+  .category-logo.aspect-image {
+    max-width: 60px;
+  }
+  
+  .category-text-title .category-name {
+    @include underline;
+  }
+}
+
+body.categories-list {
+  .list-controls {
+    display: none;
+  }
+  .category-boxes, .category-boxes-with-topics {
+    margin-top: 0;
+    
+    .category-box {
+      border-left-width: 0;
+    }
+    
+    .category-box-inner {
+      border-left-width: 2px;
+    }
+    
+    .category-box-clients,
+    .category-box-uncategorized,
+    .category-box-staff,
+    .category-box-welcome,
+    .category-box-archive {
+      display: none;
+    }
+  }
 }

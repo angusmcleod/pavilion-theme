@@ -1,10 +1,26 @@
-.categories-list .category .category-logo.aspect-image img {
-  display: none;
-}
-
 .category-heading .category-logo.aspect-image {
   max-width: 50px;
   padding-bottom: 50px;
   margin: 5px 15px 5px 10px;
   float: left;
 }
+
+.category-list {
+  .category-list-item {
+    border-top: none;
+  }
+  .category-title-link {
+    display: grid;
+    grid-template-columns: 75px 300px;
+    align-items: center;
+    
+    .category-text-title {
+      order: 2;
+    }
+    
+    .category-logo {
+      order: 1;
+    }
+  }
+}
+

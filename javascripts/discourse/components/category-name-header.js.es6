@@ -11,6 +11,7 @@ export default Component.extend({
       if (this.category.uploaded_logo) {
         $el.insertAfter('section.category-heading .category-logo');
         $('section.category-heading').addClass('has-logo');
+        $('section.category-heading .category-name-header, section.category-heading p').wrapAll('<div class="category-heading-details"></div>');
       } else {
         $el.appendTo('section.category-heading');    
       }
