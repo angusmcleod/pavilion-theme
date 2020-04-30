@@ -7,11 +7,11 @@ export default Component.extend({
   didInsertElement() {
     scheduleOnce('afterRender', () => {
       let $el = $(this.element);
-            
-      if (this.category.parentCategory) {
-        $el.appendTo('section.category-heading');
+                  
+      if (this.category.uploaded_logo) {
+        $el.insertAfter('section.category-heading .category-logo');  
       } else {
-        $el.insertAfter('section.category-heading .category-logo');        
+        $el.appendTo('section.category-heading');    
       }
     });
   }
