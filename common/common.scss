@@ -1,3 +1,16 @@
+ul.custom-header-links {
+  display: none;
+}
+
+body[class*=" user-"],
+body[class*=" admin-"],
+body.home-page {
+  ul.custom-header-links {
+    display: inline-flex;
+  }
+}
+
+
 .badge-card .badge-contents .badge-info {
   padding-right: 0;
 }
