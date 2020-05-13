@@ -10,7 +10,6 @@ body.home-page {
   }
 }
 
-
 .badge-card .badge-contents .badge-info {
   padding-right: 0;
 }
@@ -88,6 +87,10 @@ div.team-user-card > div {
 
 body.categories-list {
   .list-controls {
+    margin: 0;
+  }
+  #navigation-bar,
+  #create-topic {
     display: none;
   }
   .category-boxes, .category-boxes-with-topics {
@@ -95,10 +98,12 @@ body.categories-list {
     
     .category-box {
       border-left-width: 0;
+      margin: 0 0.5em 1em 0.5em;
     }
     
     .category-box-inner {
-      border-left-width: 2px;
+      border-width: 1px;
+      border-left-width: 1px;
     }
     
     .category-box-clients,

@@ -5,13 +5,24 @@
   float: left;
 }
 
-.category-list {
+.categories-list .category-list {
+  margin-bottom: 6em;
+  
   .category-list-item {
-    border-top: none;
+    border-top: none !important;
+    border-bottom: none !important;
+    margin-bottom: 1em;
+    
+    &[data-category-id="4"],
+    &[data-category-id="1"],
+    &[data-category-id="66"],
+    &[data-category-id="72"] {
+      display: none;
+    }
   }
   .category-title-link {
     display: grid;
-    grid-template-columns: 75px 300px;
+    grid-template-columns: 75px calc(100% - 75px);
     align-items: center;
     
     .category-text-title {
