@@ -1,11 +1,11 @@
-ul.custom-header-links {
+ul.custom-header-links li:not(.bug-report) {
   display: none;
 }
 
 body[class*=" user-"],
 body[class*=" admin-"],
 body.home-page {
-  ul.custom-header-links {
+  ul.custom-header-links li {
     display: inline-flex;
   }
 }
