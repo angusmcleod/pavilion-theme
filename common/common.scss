@@ -1,4 +1,4 @@
-ul.custom-header-links li:not(.bug-report) {
+ul.custom-header-links li:not(.bug-report):not(.feature-request) {
   display: none;
 }
 
