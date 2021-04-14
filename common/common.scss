@@ -82,6 +82,7 @@ body.categories-list {
   }
 }
 
-.d-modal.create-account .user-field-meta-username {
+.d-modal.create-account .user-field-meta-username,
+.invites-show .user-field-meta-username {
   display: none;
 }
