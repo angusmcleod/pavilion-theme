@@ -35,8 +35,17 @@ div.team-user-card > div {
   text-decoration: none;
 }
 
-.category-open-source .category-heading .category-logo {
-  margin-top: 10px;
+.category-heading .advanced-category-header {
+  flex-direction: row;
+
+  .category-details {
+    order: 2;
+  }
+
+  .category-meta {
+    order: 1;
+    margin-right: 2em;
+  }
 }
 
 .categories-list .category-list .category {
